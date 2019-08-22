@@ -1,0 +1,20 @@
+﻿@model Group1APIProject.Models.RecipeFavorite
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<dl class="row">
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Result.Title)
+    </dd>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Result.Ingredients)
+    </dd>
+    <dd >
+    <a href="@Url.Content(Model.Result.Href)">How to make it</a>
+    </dd>
+</dl>
+<a asp-action="Index">Back to List</a>

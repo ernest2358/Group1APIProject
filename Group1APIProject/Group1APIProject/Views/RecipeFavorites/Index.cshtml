@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Group1APIProject.Models.RecipeFavorite>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Favorite Recipes</h1>
+
+<p>
+    <a asp-controller="Recipe" asp-action="NewRecipe">Search New Recipes</a>
+</p>
+<table class="table">
+
+    <tbody>
+        @foreach (var item in Model.ToList<RecipeFavorite>())
+        {
+            <tr>
+                <td align="left">
+                    <img src="@Url.Content(item.Result.Thumbnail)" />
+                </td>
+                <td align="left">
+                    @Html.DisplayFor(modelItem => item.Result.Title)
+                </td>
+                <td align="left">                    
+                    <a href="@Url.Content(item.Result.Href)" target="_blank">@Html.DisplayFor(modelItem => item.Result.Href)</a>
+                </td>
+                <td align="left">
+                    <a asp-action="Details" asp-route-id="@item.RecipeFavoriteId">Details</a>
+                    |
+                    <a asp-action="Delete" asp-route-id="@item.RecipeFavoriteId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
